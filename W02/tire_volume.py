@@ -16,11 +16,6 @@ MAX_DIAMETER = 999
 print("Welcome to tire volume calculator")
 print("This program computes and outputs the volume of a tire")
 
-# define some constants for the maximum values of tire width, aspect ratio, and wheel diameter
-MAX_WIDTH = 999
-MAX_ASPECT_RATIO = 999
-MAX_DIAMETER = 999
-
 # get the tire width, aspect ratio, and wheel diameter from the user
 while True:
     try:
@@ -53,7 +48,6 @@ while True:
         # catch any invalid input and print an error message
         print("\nInvalid input. Please enter a valid number. (values must be between 0 and 999)")
 
-
 # Import the datetime class from the datetime
 # module so that it can be used in this program.
 from datetime import datetime
@@ -70,8 +64,6 @@ with open("volumes.txt","at") as volumes:
     # Use an f-string to print only the date
     # part of the current date and time.
     print(f"\n{current_date_and_time:%Y-%m-%d}, {tire_width}, {tire_aspect_ratio}, {wheel_diameter}, {volume:.2f}", file = volumes)
-
-
 
 while True:
     try:
