@@ -1,17 +1,44 @@
 import random
 
 def main():
-    # Generate five sentences and print them.
-    for i in range(5):
-        print(make_sentence())
+    # Generate and print six sentences
+    sentences = [
+        make_sentence(1, 'past'),
+        make_sentence(1, 'present'),
+        make_sentence(1, 'future'),
+        make_sentence(2, 'past'),
+        make_sentence(2, 'present'),
+        make_sentence(2, 'future')
+    ]
+    for sentence in sentences:
+        print(sentence)
 
-def make_sentence():
-    """Generate and return a simple English sentence."""
-    determiner = get_determiner(random.randint(1, 2))
-    noun = get_noun(random.randint(1, 2))
-    verb = get_verb()
+def make_sentence(quantity, tense):
+    """Build and return a sentence with three words:
+    a determiner, a noun, and a verb. The grammatical
+    quantity of the determiner and noun will match the
+    number in the quantity parameter. The grammatical
+    quantity and tense of the verb will match the number
+    and tense in the quantity and tense parameters.
+
+    Parameters:
+        quantity (int): an integer that determines the grammatical
+            number of the determiner and noun in the sentence.
+        tense (str): a string that determines the grammatical tense
+            of the verb in the sentence, either "past", "present"
+            or "future".
+
+    Returns:
+        str: a sentence with three words, a determiner, a noun, and
+            a verb, that follows the grammar rules specified by the
+            quantity and tense parameters.
+    """
+    determiner = get_determiner(quantity)
+    noun = get_noun(quantity)
+    verb = get_verb(quantity, tense)
     sentence = f"{determiner} {noun} {verb}."
     return sentence
+
 
 def get_determiner(quantity):
     """Return a randomly chosen determiner. A determiner is
@@ -62,16 +89,36 @@ def get_noun(quantity):
     word = random.choice(words)
     return word
 
-def get_verb():
+def get_verb(quantity, tense):
     """Return a randomly chosen verb. A verb is a word that
     expresses an action or state of being.
 
+    Parameters
+        quantity (int): an integer that determines if the
+            returned verb is single or plural.
+        tense (str): a string that determines the verb conjugation,
+            either "past", "present" or "future".
     Return:
         str: a randomly chosen verb.
     """
-    words = ["laughs", "eats", "thinks", "thought", "runs", "writes"]
+    if tense == 'past':
+        words = ["drank", "ate", "grew", "laughed", "thought",
+                 "ran", "slept", "talked", "walked", "wrote"]
+    elif tense == 'present' and quantity == 1:
+        words = ["drinks", "eats", "grows", "laughs", "thinks",
+                 "runs", "sleeps", "talks", "walks", "writes"]
+    elif tense == 'present' and quantity != 1:
+        words = ["drink", "eat", "grow", "laugh", "think",
+                 "run", "sleep", "talk", "walk", "write"]
+    elif tense == 'future':
+        words = ["will drink", "will eat", "will grow", "will laugh",
+                 "will think", "will run", "will sleep", "will talk",
+                 "will walk", "will write"]
+    else:
+        words = []
     word = random.choice(words)
     return word
+
 
 if __name__ == "__main__":
     main()
