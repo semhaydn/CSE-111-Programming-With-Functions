@@ -1,4 +1,4 @@
-# Calculate water column height 
+# Calculate water column height
 def water_column_height(tower_height, tank_height):
     w_c_height = tower_height + ((3 * tank_height) / 4)
     return w_c_height
@@ -41,12 +41,28 @@ EARTH_ACCELERATION_OF_GRAVITY = 9.80665
 WATER_DENSITY = 998.2
 WATER_DYNAMIC_VISCOSITY = 0.0010016
 
+def get_float_input(prompt):
+    while True:
+        try:
+            value = float(input(prompt))
+            return value
+        except ValueError:
+            print("Invalid input. Please enter a valid floating-point number.")
+
+def get_int_input(prompt):
+    while True:
+        try:
+            value = int(input(prompt))
+            return value
+        except ValueError:
+            print("Invalid input. Please enter a valid integer.")
+
 def main():
-    tower_height = float(input("Height of water tower (meters): "))
-    tank_height = float(input("Height of water tank walls (meters): "))
-    length1 = float(input("Length of supply pipe from tank to lot (meters): "))
-    quantity_angles = int(input("Number of 90° angles in supply pipe: "))
-    length2 = float(input("Length of pipe from supply to house (meters): "))
+    tower_height = get_float_input("Height of water tower (meters): ")
+    tank_height = get_float_input("Height of water tank walls (meters): ")
+    length1 = get_float_input("Length of supply pipe from tank to lot (meters): ")
+    quantity_angles = get_int_input("Number of 90° angles in supply pipe: ")
+    length2 = get_float_input("Length of pipe from supply to house (meters): ")
 
     density = WATER_DENSITY
     viscosity = WATER_DYNAMIC_VISCOSITY
@@ -78,13 +94,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
- 
-
-
-
-
-    
