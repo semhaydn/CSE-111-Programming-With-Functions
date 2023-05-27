@@ -41,6 +41,7 @@ EARTH_ACCELERATION_OF_GRAVITY = 9.80665
 WATER_DENSITY = 998.2
 WATER_DYNAMIC_VISCOSITY = 0.0010016
 
+# Validate the floating-point input
 def get_float_input(prompt):
     while True:
         try:
@@ -49,6 +50,7 @@ def get_float_input(prompt):
         except ValueError:
             print("Invalid input. Please enter a valid floating-point number.")
 
+# Validate the integer input
 def get_int_input(prompt):
     while True:
         try:
