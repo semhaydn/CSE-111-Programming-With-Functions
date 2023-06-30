@@ -1,26 +1,3 @@
-
-def read_file(file):
-    # Create an empty list that will store
-    # the lines of text from the text file.
-    list = []
-
-    # Open the text file for reading and store a reference
-    # to the opened file in a variable named text_file.
-    with open("provinces.txt", "rt") as text_file:
-
-            # Read the contents of the text
-            # file one line at a time.
-            for line in text_file:
-                # Remove white space, if there is any,
-                # from the beginning and end of the line.
-                clean_line = line.strip()
-
-                # Append the clean line of text
-                # onto the end of the list.
-                list.append(clean_line)
-
-    return list
-
 def main():
 
     text_list = read_file("provinces.txt")
@@ -45,6 +22,28 @@ def main():
     count = text_list.count("Alberta")
     print()
     print(f"Alberta occurs {count} times in the modified list.")
+
+def read_file(file):
+    # Create an empty list that will store
+    # the lines of text from the text file.
+    list = []
+
+    # Open the text file for reading and store a reference
+    # to the opened file in a variable named text_file.
+    with open("provinces.txt", "rt") as text_file:
+
+            # Read the contents of the text
+            # file one line at a time.
+            for line in text_file:
+                # Remove white space, if there is any,
+                # from the beginning and end of the line.
+                clean_line = line.strip()
+
+                # Append the clean line of text
+                # onto the end of the list.
+                list.append(clean_line)
+
+    return list
 
 
 # If this file was executed like this:
